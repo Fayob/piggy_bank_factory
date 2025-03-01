@@ -97,7 +97,7 @@ contract PiggyBank {
 
     uint256 amount = IERC20(_token).balanceOf(address(this));
     // IERC20 erc20Token = IERC20(_token);
-    if(IERC20(_token).transfer(owner, amount)) revert WITHDRAWAL_FAILED();
+    if(!IERC20(_token).transfer(owner, amount)) revert WITHDRAWAL_FAILED();
 
     balance[_token] = 0;
 
